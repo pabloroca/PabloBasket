@@ -91,6 +91,15 @@ open class SettingsDataController: DefaultDataManager {
         }
     }
 
+    open func deleteAll() {
+        do {
+            try realm.safeWrite {
+                realm.delete(self.readAll(objectype: Settings.self))
+            }
+        } catch let error as NSError {
+            print("deleteAll - Something went wrong: \(error.localizedDescription)")
+        }
+    }
 }
 
 /// Factory method to create object
