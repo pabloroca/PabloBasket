@@ -46,6 +46,10 @@ open class ExchangeDataController: DefaultDataManager {
         }
     }
     
+    open func readAll() -> [CurrencyExchange] {
+        return self.readAll(objectype: CurrencyExchange.self) as? [CurrencyExchange] ?? []
+    }
+    
     open func deleteAll() {
         do {
             try realm.safeWrite {

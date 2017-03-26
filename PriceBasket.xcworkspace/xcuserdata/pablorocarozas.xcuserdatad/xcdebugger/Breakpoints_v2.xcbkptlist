@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PriceBasket/Controllers/DataControllers/ExchangeDataController.swift"
-            timestampString = "512231969.8754"
+            filePath = "PriceBasket/Controllers/NetworkControllers/ExchangeNetworkController.swift"
+            timestampString = "512231995.588976"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "addfromJSON(data:completionHandler:)"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "readFromServer(completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PriceBasket/Controllers/NetworkControllers/ExchangeNetworkController.swift"
-            timestampString = "512231995.588976"
+            filePath = "PriceBasketTests/DataBasketTests.swift"
+            timestampString = "512233815.648469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "readFromServer(completionHandler:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "testcalculateBasket()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -45,6 +45,7 @@ class DataExchangeTests: XCTestCase {
 
         readJson(file: "Exchange")
         
+        DataCurrencyTests().setUp()
         self.dataController = ExchangeDataController()
         self.dataController?.deleteAll()
         if let jsondict = self.jsondict {
@@ -58,18 +59,55 @@ class DataExchangeTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        DataCurrencyTests().tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testaddfromJSON() {
+        if let data = self.dataController?.readAll() {
+            if !data.isEmpty || data.count > 0 {
+                XCTAssert(true, "Pass")
+            } else {
+                XCTFail()
+            }
+        } else {
+            XCTFail()
         }
     }
     
+    func testreadExchangeFor() {
+        if let data = self.dataController?.readExchangeFor(currency: "USD") {
+            if data == 1.0 {
+                XCTAssert(true, "Pass")
+            } else {
+                XCTFail()
+            }
+        } else {
+            XCTFail()
+        }
+    }
+    
+    func testdeleteAll() {
+        self.dataController?.deleteAll()
+        if let data = self.dataController?.readAll() {
+            if data.isEmpty || data.count == 0 {
+                XCTAssert(true, "Pass")
+            } else {
+                XCTFail()
+            }
+        } else {
+            XCTAssert(true, "Pass")
+        }
+    }
+    
+    func testreadAll() {
+        if let data = self.dataController?.readAll() {
+            if !data.isEmpty || data.count > 0 {
+                XCTAssert(true, "Pass")
+            } else {
+                XCTFail()
+            }
+        } else {
+            XCTFail()
+        }
+    }
 }

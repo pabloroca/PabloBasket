@@ -18,7 +18,7 @@ open class BasketDataControler: DefaultDataManager {
             return nil
         }
     }
-
+    
     open func update(fkid: Int, units: Int) {
         do {
             try realm.safeWrite {
@@ -47,6 +47,20 @@ open class BasketDataControler: DefaultDataManager {
         return total
     }
     
+    open func readAll() -> [Basket] {
+        return self.readAll(objectype: Basket.self) as? [Basket] ?? []
+    }
+    
+    open func deleteAll() {
+        do {
+            try realm.safeWrite {
+                realm.delete(self.readAll(objectype: Basket.self))
+            }
+        } catch let error as NSError {
+            print("deleteAll - Something went wrong: \(error.localizedDescription)")
+        }
+    }
+
 }
 
 /// Factory method to create object

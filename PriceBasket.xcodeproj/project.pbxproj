@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D0C540B1E880E5300CCE304 /* DataBasketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0C540A1E880E5300CCE304 /* DataBasketTests.swift */; };
 		6D0DFEA61E87E51F001AF671 /* DataCurrencyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0DFEA51E87E51F001AF671 /* DataCurrencyTests.swift */; };
 		6D0DFEA81E87EEB9001AF671 /* Currency.json in Resources */ = {isa = PBXBuildFile; fileRef = 6D0DFEA71E87EEB9001AF671 /* Currency.json */; };
 		6D0DFEAA1E88098F001AF671 /* DataExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0DFEA91E88098F001AF671 /* DataExchangeTests.swift */; };
@@ -69,6 +70,7 @@
 /* Begin PBXFileReference section */
 		0026FCA06409045A1E1A4CE1 /* Pods_PriceBasketUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PriceBasketUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		03DEB033DB0CF44B9D3186DE /* Pods-PriceBasket.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PriceBasket.release.xcconfig"; path = "Pods/Target Support Files/Pods-PriceBasket/Pods-PriceBasket.release.xcconfig"; sourceTree = "<group>"; };
+		6D0C540A1E880E5300CCE304 /* DataBasketTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBasketTests.swift; sourceTree = "<group>"; };
 		6D0DFEA51E87E51F001AF671 /* DataCurrencyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCurrencyTests.swift; sourceTree = "<group>"; };
 		6D0DFEA71E87EEB9001AF671 /* Currency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Currency.json; sourceTree = "<group>"; };
 		6D0DFEA91E88098F001AF671 /* DataExchangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExchangeTests.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		6D79D3811E8673AC0030F4FB /* PriceBasketTests */ = {
 			isa = PBXGroup;
 			children = (
+				6D0C540A1E880E5300CCE304 /* DataBasketTests.swift */,
 				6D0DFEA51E87E51F001AF671 /* DataCurrencyTests.swift */,
 				6D0DFEA91E88098F001AF671 /* DataExchangeTests.swift */,
 				6DE3D2601E87D48000AE8F4F /* DataGoodsTests.swift */,
@@ -692,6 +695,7 @@
 			files = (
 				6DE3D2611E87D48000AE8F4F /* DataGoodsTests.swift in Sources */,
 				6D0DFEA61E87E51F001AF671 /* DataCurrencyTests.swift in Sources */,
+				6D0C540B1E880E5300CCE304 /* DataBasketTests.swift in Sources */,
 				6D0DFEAA1E88098F001AF671 /* DataExchangeTests.swift in Sources */,
 				6DE3D2631E87D90800AE8F4F /* DataSettingsTests.swift in Sources */,
 			);
