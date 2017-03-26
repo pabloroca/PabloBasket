@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  PriceBasket
+
+  Created by Pablo Roca Rozas on 25/03/2017.
+  Copyright © 2017 PR2Studio. All rights reserved.
+*/
+
+"Main_Title"   = "Price Basket";
+"Checkout_Title"   = "CheckOut";
+
+"btnCheckout_Title"   = "Checkout";
+
+// Checkpout
+
+"lblTotalBasket_Text"   = "Total Basket";
+"lblCurrency_Text"   = "Currency";
+
