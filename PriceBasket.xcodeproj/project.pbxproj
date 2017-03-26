@@ -357,6 +357,7 @@
 				6D79D3681E8673AC0030F4FB /* Resources */,
 				3E70A4FE66D23E174C079226 /* [CP] Embed Pods Frameworks */,
 				0300F6C0B98F438001CCEE80 /* [CP] Copy Pods Resources */,
+				6DE3D25F1E87D0AD00AE8F4F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -543,6 +544,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PriceBasketTests/Pods-PriceBasketTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		6DE3D25F1E87D0AD00AE8F4F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#${PODS_ROOT}/SwiftLint/swiftlint";
 		};
 		759F35DE901B47379049AB61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

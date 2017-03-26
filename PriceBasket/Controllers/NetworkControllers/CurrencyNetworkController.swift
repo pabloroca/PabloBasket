@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 open class CurrencyNetworkController {
     open func readFromServer(completionHandler: @escaping (_ success: Bool) -> Void) {
@@ -18,7 +19,9 @@ open class CurrencyNetworkController {
                 return
             }
             
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             Alamofire.request(EndPoints.currencylist, method: .get).responseJSON { (response) in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 guard response.result.isSuccess else {
                     completionHandler(false)
                     return

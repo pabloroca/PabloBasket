@@ -65,6 +65,7 @@ Trying to apply SOLID principles and Clean Code, specially the Single Responsabi
 ## CACHE
 
 Currencies are cached by one day
+
 Exchanges are cached by 60 mins (as they do in the free tier)
 
 ## Database

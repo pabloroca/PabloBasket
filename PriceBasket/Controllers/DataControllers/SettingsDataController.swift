@@ -90,7 +90,6 @@ open class SettingsDataController: DefaultDataManager {
             return ""
         }
     }
-    
 
 }
 

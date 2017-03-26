@@ -64,9 +64,7 @@ open class CurrencyDataController: DefaultDataManager {
         }
     }
 
-
 }
-
 
 /// Factory method to create object
 //

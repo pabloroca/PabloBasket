@@ -20,7 +20,7 @@ open class DefaultDataManager {
     }
     
     open func readFirst(objectype: Object.Type) -> Object? {
-        if let result = self.realm.objects(objectype.self).first{
+        if let result = self.realm.objects(objectype.self).first {
             return result
         } else {
             return nil
@@ -28,7 +28,7 @@ open class DefaultDataManager {
     }
 
     open func readFirstFor(objectype: Object.Type, predicate: NSPredicate) -> Object? {
-        if let result = self.realm.objects(objectype.self).filter(predicate).first{
+        if let result = self.realm.objects(objectype.self).filter(predicate).first {
             return result
         } else {
             return nil

@@ -18,7 +18,9 @@ open class ExchangeNetworkController {
                 return
             }
             
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             Alamofire.request(EndPoints.exchangerates, method: .get).responseJSON { (response) in
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 guard response.result.isSuccess else {
                     completionHandler(false)
                     return
