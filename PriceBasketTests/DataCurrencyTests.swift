@@ -25,7 +25,7 @@ class DataCurrencyTests: XCTestCase {
                 if let object = json as? [String: Any] {
                     // json is a dictionary
                     //print(object)
-                    self.jsondict = object
+                    jsondict = object
                 } else if let object = json as? [Any] {
                     // json is an array
                     print(object)
@@ -45,10 +45,10 @@ class DataCurrencyTests: XCTestCase {
         
         readJson(file: "Currency")
         
-        self.dataController = CurrencyDataController()
-        self.dataController?.deleteAll()
-        if let jsondict = self.jsondict {
-            self.dataController?.addfromJSON(data: jsondict, completionHandler: { (success) in
+        dataController = CurrencyDataController()
+        dataController?.deleteAll()
+        if let jsondict = jsondict {
+            dataController?.addfromJSON(data: jsondict, completionHandler: { (success) in
             })
         }
         
@@ -58,11 +58,11 @@ class DataCurrencyTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        self.dataController?.deleteAll()
+        dataController?.deleteAll()
     }
     
     func testaddfromJSON() {
-        if let data = self.dataController?.readAll() {
+        if let data = dataController?.readAll() {
             if !data.isEmpty || data.count > 0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -74,8 +74,8 @@ class DataCurrencyTests: XCTestCase {
     }
     
     func testdeleteAll() {
-        self.dataController?.deleteAll()
-        if let data = self.dataController?.readAll() {
+        dataController?.deleteAll()
+        if let data = dataController?.readAll() {
             if data.isEmpty || data.count == 0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -87,7 +87,7 @@ class DataCurrencyTests: XCTestCase {
     }
     
     func testreadAll() {
-        if let data = self.dataController?.readAll() {
+        if let data = dataController?.readAll() {
             if !data.isEmpty || data.count > 0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -99,7 +99,7 @@ class DataCurrencyTests: XCTestCase {
     }
     
     func testreadAllSorted() {
-        if let data = self.dataController?.readAllSorted() {
+        if let data = dataController?.readAllSorted() {
             if !data.isEmpty || data.count > 0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -111,7 +111,7 @@ class DataCurrencyTests: XCTestCase {
     }
     
     func testnameforCurrency() {
-        if let data = self.dataController?.nameforCurrency(currency: "USD") {
+        if let data = dataController?.nameforCurrency(currency: "USD") {
             if data.characters.count > 0 {
                 XCTAssert(true, "Pass")
             } else {

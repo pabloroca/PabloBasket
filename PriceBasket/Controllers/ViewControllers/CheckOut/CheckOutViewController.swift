@@ -24,7 +24,7 @@ class CheckOutViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.setUpUI()
+        setUpUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,11 +34,11 @@ class CheckOutViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = NSLocalizedString("Checkout_Title", comment: "")
+        title = NSLocalizedString("Checkout_Title", comment: "")
         
-        ExchangeNetworkController().readFromServer(completionHandler: { (succes) in
-            self.lblTotalBasketAmount.text = String(format: "%.2f", BasketDataControler().calculateBasket())
-            self.lblCurrencyValue.text = SettingsDataController().nameforCurrencySelected()
+        ExchangeNetworkController().readFromServer(completionHandler: { [weak self] (succes) in
+            self?.lblTotalBasketAmount.text = String(format: "%.2f", BasketDataControler().calculateBasket())
+            self?.lblCurrencyValue.text = SettingsDataController().nameforCurrencySelected()
         })
 
         lblTotalBasketAmount.text = String(format: "%.2f", BasketDataControler().calculateBasket())

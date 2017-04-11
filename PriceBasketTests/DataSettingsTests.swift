@@ -16,19 +16,19 @@ class DataSettingsTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.dataController = SettingsDataController()
-        self.dataController?.deleteAll()
-        self.dataController?.setup()
+        dataController = SettingsDataController()
+        dataController?.deleteAll()
+        dataController?.setup()
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        self.dataController?.deleteAll()
+        dataController?.deleteAll()
     }
     
     func testSetup() {
-        if let data = self.dataController?.readAll(objectype: Settings.self) {
+        if let data = dataController?.readAll(objectype: Settings.self) {
             if !data.isEmpty || data.count == 1 {
                 XCTAssert(true, "Pass")
             } else {
@@ -40,8 +40,8 @@ class DataSettingsTests: XCTestCase {
     }
     
     func testdeleteAll() {
-        self.dataController?.deleteAll()
-        if let data = self.dataController?.readAll(objectype: Settings.self) {
+        dataController?.deleteAll()
+        if let data = dataController?.readAll(objectype: Settings.self) {
             if data.isEmpty || data.count == 0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -53,7 +53,7 @@ class DataSettingsTests: XCTestCase {
     }
     
     func testreadFirst() {
-        if let _ = self.dataController?.readFirst() {
+        if let _ = dataController?.readFirst() {
             XCTAssert(true, "Pass")
         } else {
             XCTFail()
@@ -61,8 +61,8 @@ class DataSettingsTests: XCTestCase {
     }
     
     func testsetTSforCurrency() {
-        self.dataController?.setTSforCurrency()
-        if let data = self.dataController?.readFirst() {
+        dataController?.setTSforCurrency()
+        if let data = dataController?.readFirst() {
             if data.tscurrency > 0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -74,8 +74,8 @@ class DataSettingsTests: XCTestCase {
     }
 
     func testsetTSforExchange() {
-        self.dataController?.setTSforExchange()
-        if let data = self.dataController?.readFirst() {
+        dataController?.setTSforExchange()
+        if let data = dataController?.readFirst() {
             if data.tsexchange > 0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -87,8 +87,8 @@ class DataSettingsTests: XCTestCase {
     }
 
     func testsetDefaultCurrency() {
-        self.dataController?.setDefaultCurrency(currency: "EUR")
-        if let data = self.dataController?.readFirst() {
+        dataController?.setDefaultCurrency(currency: "EUR")
+        if let data = dataController?.readFirst() {
             if data.currencyselected == "EUR" {
                 XCTAssert(true, "Pass")
             } else {
@@ -100,7 +100,7 @@ class DataSettingsTests: XCTestCase {
     }
     
     func testkeyforCurrencySelected() {
-        let key = self.dataController?.keyforCurrencySelected()
+        let key = dataController?.keyforCurrencySelected()
         if key == "USD" {
             XCTAssert(true, "Pass")
         } else {
@@ -110,7 +110,7 @@ class DataSettingsTests: XCTestCase {
     
     func testnameforCurrencySelected() {
         DataCurrencyTests().setUp()
-        let name = self.dataController?.nameforCurrencySelected()
+        let name = dataController?.nameforCurrencySelected()
         DataCurrencyTests().tearDown()
         if name == "United States Dollar" {
             XCTAssert(true, "Pass")

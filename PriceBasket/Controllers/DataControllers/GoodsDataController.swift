@@ -13,14 +13,14 @@ open class GoodsDataController: DefaultDataManager {
     
     /// initial setup
     open func setup() {
-        let arrobjects = self.realm.objects(Goods.self)
+        let arrobjects = realm.objects(Goods.self)
         if arrobjects.isEmpty {
             do {
                 try realm.safeWrite {
-                    self.realm.add(Goods.init(id: 1, name: "Peas", price: 0.95, unittype: "Bag")!)
-                    self.realm.add(Goods.init(id: 2, name: "Eggs", price: 2.10, unittype: "Dozen")!)
-                    self.realm.add(Goods.init(id: 3, name: "Milk", price: 1.30, unittype: "Bottle")!)
-                    self.realm.add(Goods.init(id: 4, name: "Beans", price: 0.73, unittype: "Can")!)
+                    realm.add(Goods.init(id: 1, name: "Peas", price: 0.95, unittype: "Bag")!)
+                    realm.add(Goods.init(id: 2, name: "Eggs", price: 2.10, unittype: "Dozen")!)
+                    realm.add(Goods.init(id: 3, name: "Milk", price: 1.30, unittype: "Bottle")!)
+                    realm.add(Goods.init(id: 4, name: "Beans", price: 0.73, unittype: "Can")!)
                 }
             } catch let error as NSError {
                 print("setup - Something went wrong: \(error.localizedDescription)")
@@ -29,11 +29,11 @@ open class GoodsDataController: DefaultDataManager {
     }
     
     open func readAll() -> [Goods] {
-        return self.readAll(objectype: Goods.self) as? [Goods] ?? []
+        return readAll(objectype: Goods.self) as? [Goods] ?? []
     }
     
     open func readforKey(id: Int) -> Goods? {
-        if let goods = self.readFirstFor(objectype: Goods.self, predicate: NSPredicate(format: "id = %d", id)) as? Goods {
+        if let goods = readFirstFor(objectype: Goods.self, predicate: NSPredicate(format: "id = %d", id)) as? Goods {
             return goods
         } else {
             return nil
@@ -43,7 +43,7 @@ open class GoodsDataController: DefaultDataManager {
     open func deleteAll() {
         do {
             try realm.safeWrite {
-                realm.delete(self.readAll(objectype: Goods.self))
+                realm.delete(readAll(objectype: Goods.self))
             }
         } catch let error as NSError {
             print("deleteAll - Something went wrong: \(error.localizedDescription)")

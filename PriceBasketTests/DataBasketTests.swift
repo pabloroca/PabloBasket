@@ -19,8 +19,8 @@ class DataBasketTests: XCTestCase {
         DataCurrencyTests().setUp()
         DataExchangeTests().setUp()
         
-        self.dataController = BasketDataControler()
-        self.dataController?.deleteAll()
+        dataController = BasketDataControler()
+        dataController?.deleteAll()
 
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -28,15 +28,15 @@ class DataBasketTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        self.dataController?.deleteAll()
+        dataController?.deleteAll()
         DataCurrencyTests().tearDown()
         DataExchangeTests().tearDown()
     }
     
     func testupdate() {
-        self.dataController?.update(fkid: 2, units: 2)
+        dataController?.update(fkid: 2, units: 2)
         
-        if let basket = self.dataController?.readforKey(fkid: 2) {
+        if let basket = dataController?.readforKey(fkid: 2) {
             if basket.fkid == 2 && basket.units == 2 {
                 XCTAssert(true, "Pass")
             } else {
@@ -48,8 +48,8 @@ class DataBasketTests: XCTestCase {
     }
     
     func testdeleteAll() {
-        self.dataController?.deleteAll()
-        if let data = self.dataController?.readAll() {
+        dataController?.deleteAll()
+        if let data = dataController?.readAll() {
             if data.isEmpty || data.count == 0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -61,8 +61,8 @@ class DataBasketTests: XCTestCase {
     }
     
     func testcalculateBasket() {
-        self.dataController?.update(fkid: 2, units: 2)
-        let total = self.dataController?.calculateBasket()
+        dataController?.update(fkid: 2, units: 2)
+        let total = dataController?.calculateBasket()
         if total == 4.2 {
             XCTAssert(true, "Pass")
         } else {

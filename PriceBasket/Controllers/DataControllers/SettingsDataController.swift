@@ -13,11 +13,11 @@ open class SettingsDataController: DefaultDataManager {
     
     /// initial setup
     public func setup() {
-        let arrobjects = self.realm.objects(Settings.self)
+        let arrobjects = realm.objects(Settings.self)
         if arrobjects.isEmpty {
             do {
                 try realm.safeWrite {
-                    self.realm.add(Settings.init(currencyselected: Constants.defaultCurency, tscurrency: 0, tsexchange: 0)!)
+                    realm.add(Settings.init(currencyselected: Constants.defaultCurency, tscurrency: 0, tsexchange: 0)!)
                 }
             } catch let error as NSError {
                 print("setup - Something went wrong: \(error.localizedDescription)")
@@ -28,12 +28,12 @@ open class SettingsDataController: DefaultDataManager {
     // MARK: - Common funcs
 
     public func readFirst() -> Settings? {
-        return self.readFirst(objectype: Settings.self) as? Settings
+        return readFirst(objectype: Settings.self) as? Settings
     }
     
     /// setTSforCurrency
     public func setTSforCurrency() {
-        if let result = self.readFirst(objectype: Settings.self) as? Settings {
+        if let result = readFirst(objectype: Settings.self) as? Settings {
             do {
                 try realm.safeWrite {
                     result.tscurrency = Date().timeIntervalSince1970
@@ -46,7 +46,7 @@ open class SettingsDataController: DefaultDataManager {
 
     /// setTSforExchange
     public func setTSforExchange() {
-        if let result = self.readFirst(objectype: Settings.self) as? Settings {
+        if let result = readFirst(objectype: Settings.self) as? Settings {
             do {
                 try realm.safeWrite {
                     result.tsexchange = Date().timeIntervalSince1970
@@ -59,7 +59,7 @@ open class SettingsDataController: DefaultDataManager {
 
     /// setDefaultCurrency
     public func setDefaultCurrency(currency: String) {
-        if let result = self.readFirst(objectype: Settings.self) as? Settings {
+        if let result = readFirst(objectype: Settings.self) as? Settings {
             do {
                 try realm.safeWrite {
                     result.currencyselected = currency
@@ -72,11 +72,11 @@ open class SettingsDataController: DefaultDataManager {
 
     /// setDefaultCurrencyToDefault
     public func setDefaultCurrencyToDefault() {
-        self.setDefaultCurrency(currency: Constants.defaultCurency)
+        setDefaultCurrency(currency: Constants.defaultCurency)
     }
     
     public func keyforCurrencySelected() -> String {
-        if let settings = self.readFirst() {
+        if let settings = readFirst() {
             return settings.currencyselected
         } else {
             return ""
@@ -84,7 +84,7 @@ open class SettingsDataController: DefaultDataManager {
     }
     
     public func nameforCurrencySelected() -> String {
-        if let settings = self.readFirst() {
+        if let settings = readFirst() {
             return CurrencyDataController().nameforCurrency(currency: settings.currencyselected)
         } else {
             return ""
@@ -94,7 +94,7 @@ open class SettingsDataController: DefaultDataManager {
     open func deleteAll() {
         do {
             try realm.safeWrite {
-                realm.delete(self.readAll(objectype: Settings.self))
+                realm.delete(readAll(objectype: Settings.self))
             }
         } catch let error as NSError {
             print("deleteAll - Something went wrong: \(error.localizedDescription)")

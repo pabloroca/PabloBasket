@@ -3,7 +3,7 @@
 //  Four
 //
 //  Created by Pablo Roca Rozas on 19/3/17.
-//  Copyright © 2017 Arkera. All rights reserved.
+//  Copyright © 2017 PR2Studio. All rights reserved.
 //
 
 import Foundation
@@ -13,7 +13,7 @@ import RealmSwift
 public class DataManager {
     
     func setUpLocalStorage(completionHandler: @escaping (_ success: Bool) -> Void) {
-        self.migrateStorage()
+        migrateStorage()
         
         GoodsDataController().setup()
         SettingsDataController().setup()

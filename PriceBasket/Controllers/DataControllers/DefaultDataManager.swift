@@ -15,12 +15,12 @@ open class DefaultDataManager {
     // MARK: - Common funcs
     
     open func readAll(objectype: Object.Type) -> [Object] {
-        let results = self.realm.objects(objectype.self)
+        let results = realm.objects(objectype.self)
         return(Array(results))
     }
     
     open func readFirst(objectype: Object.Type) -> Object? {
-        if let result = self.realm.objects(objectype.self).first {
+        if let result = realm.objects(objectype.self).first {
             return result
         } else {
             return nil
@@ -28,7 +28,7 @@ open class DefaultDataManager {
     }
 
     open func readFirstFor(objectype: Object.Type, predicate: NSPredicate) -> Object? {
-        if let result = self.realm.objects(objectype.self).filter(predicate).first {
+        if let result = realm.objects(objectype.self).filter(predicate).first {
             return result
         } else {
             return nil
@@ -38,7 +38,7 @@ open class DefaultDataManager {
     open func deleteAll(objectype: Object.Type) {
         do {
             try realm.safeWrite {
-                realm.delete(self.readAll(objectype: Object.self))
+                realm.delete(readAll(objectype: Object.self))
             }
         } catch let error as NSError {
             print("deleteAll - Something went wrong: \(error.localizedDescription)")

@@ -16,19 +16,19 @@ class DataGoodsTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.dataController = GoodsDataController()
-        self.dataController?.deleteAll()
-        self.dataController?.setup()
+        dataController = GoodsDataController()
+        dataController?.deleteAll()
+        dataController?.setup()
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        self.dataController?.deleteAll()
+        dataController?.deleteAll()
     }
     
     func testSetup() {
-        if let data = self.dataController?.readAll() {
+        if let data = dataController?.readAll() {
             if !data.isEmpty || data.count == 4 {
                 XCTAssert(true, "Pass")
             } else {
@@ -40,8 +40,8 @@ class DataGoodsTests: XCTestCase {
     }
     
     func testdeleteAll() {
-        self.dataController?.deleteAll()
-        if let data = self.dataController?.readAll() {
+        dataController?.deleteAll()
+        if let data = dataController?.readAll() {
             if data.isEmpty || data.count == 0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -53,7 +53,7 @@ class DataGoodsTests: XCTestCase {
     }
 
     func testreadforKeyValid() {
-        if let _ = self.dataController?.readforKey(id: 1) {
+        if let _ = dataController?.readforKey(id: 1) {
             XCTAssert(true, "Pass")
         } else {
             XCTFail()
@@ -61,7 +61,7 @@ class DataGoodsTests: XCTestCase {
     }
     
     func testreadforKeyNonValid() {
-        if let _ = self.dataController?.readforKey(id: 777) {
+        if let _ = dataController?.readforKey(id: 777) {
             XCTFail()
         } else {
             XCTAssert(true, "Pass")

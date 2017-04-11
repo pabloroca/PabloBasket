@@ -25,7 +25,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         viewTable.delegate = self
         viewTable.dataSource = self
         viewTable.tableFooterView = UIView()
-        self.setUpUI()
+        setUpUI()
         
         arrGoods = GoodsDataController().readAll()
         viewTable.reloadData()
@@ -39,7 +39,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = NSLocalizedString("Main_Title", comment: "")
+        title = NSLocalizedString("Main_Title", comment: "")
     }
     
     // MARK: - Custom methods

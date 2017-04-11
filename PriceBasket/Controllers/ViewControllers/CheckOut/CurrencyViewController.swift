@@ -37,7 +37,7 @@ class CurrencyViewController: UITableViewController {
         SettingsDataController().setDefaultCurrency(currency: currency.id)
         
         //Fixed in Xcode 8.3
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
 }

@@ -25,7 +25,7 @@ class DataExchangeTests: XCTestCase {
                 if let object = json as? [String: Any] {
                     // json is a dictionary
                     //print(object)
-                    self.jsondict = object
+                    jsondict = object
                 } else if let object = json as? [Any] {
                     // json is an array
                     print(object)
@@ -46,10 +46,10 @@ class DataExchangeTests: XCTestCase {
         readJson(file: "Exchange")
         
         DataCurrencyTests().setUp()
-        self.dataController = ExchangeDataController()
-        self.dataController?.deleteAll()
-        if let jsondict = self.jsondict {
-            self.dataController?.addfromJSON(data: jsondict, completionHandler: { (success) in
+        dataController = ExchangeDataController()
+        dataController?.deleteAll()
+        if let jsondict = jsondict {
+            dataController?.addfromJSON(data: jsondict, completionHandler: { (success) in
             })
         }
 
@@ -63,7 +63,7 @@ class DataExchangeTests: XCTestCase {
     }
     
     func testaddfromJSON() {
-        if let data = self.dataController?.readAll() {
+        if let data = dataController?.readAll() {
             if !data.isEmpty || data.count > 0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -75,7 +75,7 @@ class DataExchangeTests: XCTestCase {
     }
     
     func testreadExchangeFor() {
-        if let data = self.dataController?.readExchangeFor(currency: "USD") {
+        if let data = dataController?.readExchangeFor(currency: "USD") {
             if data == 1.0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -87,8 +87,8 @@ class DataExchangeTests: XCTestCase {
     }
     
     func testdeleteAll() {
-        self.dataController?.deleteAll()
-        if let data = self.dataController?.readAll() {
+        dataController?.deleteAll()
+        if let data = dataController?.readAll() {
             if data.isEmpty || data.count == 0 {
                 XCTAssert(true, "Pass")
             } else {
@@ -100,7 +100,7 @@ class DataExchangeTests: XCTestCase {
     }
     
     func testreadAll() {
-        if let data = self.dataController?.readAll() {
+        if let data = dataController?.readAll() {
             if !data.isEmpty || data.count > 0 {
                 XCTAssert(true, "Pass")
             } else {

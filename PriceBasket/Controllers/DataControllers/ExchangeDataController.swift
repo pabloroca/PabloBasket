@@ -14,7 +14,7 @@ open class ExchangeDataController: DefaultDataManager {
     /// adding data from JSON
     open func addfromJSON(data: [String: Any], completionHandler: @escaping (_ success: Bool) -> Void) {
         
-        self.deleteAll()
+        deleteAll()
 
         guard let results = data["quotes"] as? [String: AnyObject] else {
             completionHandler(false)
@@ -26,7 +26,7 @@ open class ExchangeDataController: DefaultDataManager {
                 for (key, value) in results {
                     if let value = value as? Double {
                         let last3 = key.substring(from:key.index(key.endIndex, offsetBy: -3))
-                        self.realm.add(CurrencyExchange.init(id: last3, exchange: value)!)
+                        realm.add(CurrencyExchange.init(id: last3, exchange: value)!)
                     }
                 }
                 completionHandler(true)
@@ -39,7 +39,7 @@ open class ExchangeDataController: DefaultDataManager {
     }
 
     open func readExchangeFor(currency: String) -> Double {
-        if let currencyexchange = self.readFirstFor(objectype: CurrencyExchange.self, predicate: NSPredicate(format: "id = %@", currency)) as? CurrencyExchange {
+        if let currencyexchange = readFirstFor(objectype: CurrencyExchange.self, predicate: NSPredicate(format: "id = %@", currency)) as? CurrencyExchange {
             return currencyexchange.exchange
         } else {
             return 0.0
@@ -47,13 +47,13 @@ open class ExchangeDataController: DefaultDataManager {
     }
     
     open func readAll() -> [CurrencyExchange] {
-        return self.readAll(objectype: CurrencyExchange.self) as? [CurrencyExchange] ?? []
+        return readAll(objectype: CurrencyExchange.self) as? [CurrencyExchange] ?? []
     }
     
     open func deleteAll() {
         do {
             try realm.safeWrite {
-                realm.delete(self.readAll(objectype: CurrencyExchange.self))
+                realm.delete(readAll(objectype: CurrencyExchange.self))
             }
         } catch let error as NSError {
             print("deleteAll - Something went wrong: \(error.localizedDescription)")

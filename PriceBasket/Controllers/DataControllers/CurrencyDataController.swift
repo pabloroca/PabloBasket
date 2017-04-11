@@ -14,7 +14,7 @@ open class CurrencyDataController: DefaultDataManager {
     /// adding data from JSON
     open func addfromJSON(data: [String: Any], completionHandler: @escaping (_ success: Bool) -> Void) {
         
-        self.deleteAll()
+        deleteAll()
         
         guard let results = data["currencies"] as? [String: AnyObject] else {
             completionHandler(false)
@@ -24,7 +24,7 @@ open class CurrencyDataController: DefaultDataManager {
         do {
             try realm.safeWrite {
                 for (key, value) in results {
-                    self.realm.add(Currency.init(id: key, name: value as! String)!)
+                    realm.add(Currency.init(id: key, name: value as! String)!)
                 }
                 completionHandler(true)
                 // set timestamp
@@ -36,18 +36,18 @@ open class CurrencyDataController: DefaultDataManager {
     }
 
     open func readAll() -> [Currency] {
-        return self.readAll(objectype: Currency.self) as? [Currency] ?? []
+        return readAll(objectype: Currency.self) as? [Currency] ?? []
     }
 
     open func readAllSorted() -> [Currency] {
-        let arrCurrency = self.readAll(objectype: Currency.self) as? [Currency] ?? []
+        let arrCurrency = readAll(objectype: Currency.self) as? [Currency] ?? []
         let sortedArray = arrCurrency.sorted { ($0["id"] as? String)! < ($1["id"] as? String)! }
 //        let sortedArray = (arrCurrency as NSArray).sortedArray(using: [NSSortDescriptor(key: "id", ascending: true)]) as! [Currency]
         return sortedArray
     }
 
     open func nameforCurrency(currency: String) -> String {
-        if let currency = self.readFirstFor(objectype: Currency.self, predicate: NSPredicate(format: "id = %@", currency)) as? Currency {
+        if let currency = readFirstFor(objectype: Currency.self, predicate: NSPredicate(format: "id = %@", currency)) as? Currency {
             return currency.name
         } else {
             return ""
@@ -57,7 +57,7 @@ open class CurrencyDataController: DefaultDataManager {
     open func deleteAll() {
         do {
             try realm.safeWrite {
-                realm.delete(self.readAll(objectype: Currency.self))
+                realm.delete(readAll(objectype: Currency.self))
             }
         } catch let error as NSError {
             print("deleteAll - Something went wrong: \(error.localizedDescription)")
